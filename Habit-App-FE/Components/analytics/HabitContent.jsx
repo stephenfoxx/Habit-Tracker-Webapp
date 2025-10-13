@@ -10,6 +10,12 @@ export default function HabitContent({ children }) {
     async function loadHabits() {
       const token = localStorage.getItem("token");
 
+      // Only fetch if token exists
+      if (!token) {
+        console.log("No token found, skipping habits fetch.");
+        return;
+      }
+
       try {
         const res = await fetch("http://localhost:5000/habits", {
           headers: {
@@ -18,10 +24,8 @@ export default function HabitContent({ children }) {
           },
         });
 
-        // Parse JSON safely
         const data = await res.json();
 
-        // If unauthorized or not an array, handle it gracefully
         if (!res.ok) {
           console.error("Failed to load habits:", data);
           setHabits([]);

@@ -26,7 +26,7 @@ router.post("/signup", async (req, res) => {
 });
 
 // -------------------- LOGIN --------------------
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ id: user._id }, "secret123", { expiresIn: "1h" });
+    const token = jwt.sign({ id: user._id }, "secret123", { expiresIn: "2h" });
 
     res.json({
       token,
