@@ -8,7 +8,7 @@ export default defineConfig({
     // Allow both localhost (dev) and your deployed frontend domain
     allowedHosts: [
       "localhost",
-      "habit-tracker-webapp-15.onrender.com", 
+      "habit-tracker-webapp-16.onrender.com", 
     ],
   },
   build: {
