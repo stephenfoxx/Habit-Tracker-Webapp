@@ -8,7 +8,7 @@ export default defineConfig({
     // Allow both localhost (dev) and your deployed frontend domain
     allowedHosts: [
       "localhost",
-      "habit-tracker-webapp-14.onrender.com", // replace with your actual Vercel URL
+      "habit-tracker-webapp-15.onrender.com", 
     ],
   },
   build: {
