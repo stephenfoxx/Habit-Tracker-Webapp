@@ -175,25 +175,25 @@ export default function Profile() {
 }
 
 
-function firstU(str) {
-  const count = [];
+// function firstU(str) {
+//   const count = [];
 
-  for (let char of str) {
-    count[char] = (count[char] || 0) + 1;
+//   for (let char of str) {
+//     count[char] = (count[char] || 0) + 1;
 
-    for (let char of str) {
-      if (count[char] === 1) {
-        return char
-      }
-    }
-  }
-  return null;
-}
+//     for (let char of str) {
+//       if (count[char] === 1) {
+//         return char
+//       }
+//     }
+//   }
+//   return null;
+// }
 
-function filterAndSort(arr) {
-  return arr.filter(num => num & 2 === 0).sort((a, b) => a - b)
-}
+// function filterAndSort(arr) {
+//   return arr.filter(num => num & 2 === 0).sort((a, b) => a - b)
+// }
 
-function updateTools(todos, newtodo) {
-  return [...todos, newtodo].filter(item => item.trim() !== "").sort();
-}
+// function updateTools(todos, newtodo) {
+//   return [...todos, newtodo].filter(item => item.trim() !== "").sort();
+// }
