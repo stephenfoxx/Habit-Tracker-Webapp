@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true, // allow all hosts
-    allowedHosts: ["habit-tracker-webapp-11.onrender.com"],
+    allowedHosts: ["habit-tracker-webapp-12.onrender.com"],
   },
 });
