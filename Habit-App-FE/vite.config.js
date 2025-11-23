@@ -1,10 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: true, // allow all hosts
-    allowedHosts: ["habit-tracker-webapp-12.onrender.com"],
+    // Allow both localhost (dev) and your deployed frontend domain
+    allowedHosts: [
+      "localhost",
+      "habit-tracker-webapp-13.onrender.com", // replace with your actual Vercel URL
+    ],
+  },
+  build: {
+    outDir: "dist", // default build folder
   },
 });
