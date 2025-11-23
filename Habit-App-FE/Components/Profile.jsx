@@ -18,9 +18,12 @@ export default function Profile() {
 
   const token = localStorage.getItem("token");
 
+  
   // -------------------- Fetch Profile --------------------
   useEffect(() => {
     async function fetchProfile() {
+      
+      
       if (!token) return;
 
       try {
@@ -32,6 +35,7 @@ export default function Profile() {
         });
 
         if (!res.ok) throw new Error("Failed to fetch profile");
+
         const data = await res.json();
 
         setUser({
@@ -70,6 +74,7 @@ export default function Profile() {
         });
 
         if (!res.ok) throw new Error("Failed to update image");
+        
         const updatedUser = await res.json();
         setUser(updatedUser);
       } catch (err) {
@@ -167,4 +172,28 @@ export default function Profile() {
       </button>
     </main>
   );
+}
+
+
+function firstU(str) {
+  const count = [];
+
+  for (let char of str) {
+    count[char] = (count[char] || 0) + 1;
+
+    for (let char of str) {
+      if (count[char] === 1) {
+        return char
+      }
+    }
+  }
+  return null;
+}
+
+function filterAndSort(arr) {
+  return arr.filter(num => num & 2 === 0).sort((a, b) => a - b)
+}
+
+function updateTools(todos, newtodo) {
+  return [...todos, newtodo].filter(item => item.trim() !== "").sort();
 }
