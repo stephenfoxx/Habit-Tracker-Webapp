@@ -1,9 +1,11 @@
 import { createContext, useState, useEffect } from "react";
 
+// ✅ Use deployed backend URL
+const API = import.meta.env.VITE_API_URL;
+
 export const HabitsContexts = createContext();
 
 export default function HabitContent({ children }) {
-   
   const [habits, setHabits] = useState([]);
   const [activeBoxes, setActiveBoxes] = useState([]);
 
@@ -11,7 +13,6 @@ export default function HabitContent({ children }) {
     async function loadHabits() {
       const token = localStorage.getItem("token");
 
-     
       // Only fetch if token exists
       if (!token) {
         console.log("No token found, skipping habits fetch.");
@@ -19,7 +20,7 @@ export default function HabitContent({ children }) {
       }
 
       try {
-        const res = await fetch("http://localhost:5000/habits", {
+        const res = await fetch(`${API}/habits`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -38,11 +39,10 @@ export default function HabitContent({ children }) {
 
         if (!Array.isArray(data)) {
           console.error("Unexpected data format:", data);
-          
+
           setHabits([]);
           setActiveBoxes([]);
           return;
-
         }
 
         setHabits(data);
